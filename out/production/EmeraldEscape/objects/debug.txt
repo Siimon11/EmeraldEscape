@@ -1,0 +1,2 @@
+g2.setColor(Color.CYAN);
+g2.drawRect(hitBox.x, hitBox.y, hitBox.width, hitBox.height);
