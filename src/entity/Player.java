@@ -16,6 +16,7 @@ public class Player extends Entity{
     BufferedImage playerImage;
     public final int playerWidth = 32;
     public final int playerHeight = 32;
+    private boolean onGround = false;
 
     public Player(GamePanel gamePanel, KeyHandler keyHandler) {
         super(gamePanel);
@@ -32,10 +33,9 @@ public class Player extends Entity{
 
         BufferedImage image = null;
         image = playerImage;
-        g2.drawImage(image, worldX, worldY, playerWidth, playerHeight, null);
+        g2.drawImage(image, (int)worldX, (int)worldY, playerWidth, playerHeight, null);
         g2.setColor(Color.BLACK);
-        g2.drawRect(worldX, worldY, 32, 32);
-
+        g2.drawRect((int)worldX, (int)worldY, 32, 32);
     }
     public void update() {
         if (gamePanel.keyHandler.aPressed && gamePanel.keyHandler.dPressed || !gamePanel.keyHandler.aPressed && !gamePanel.keyHandler.dPressed) {
@@ -58,25 +58,36 @@ public class Player extends Entity{
         } else if (xSpeed < -6) {
             xSpeed = -6;
         }
+        hitBox.y++;
+        for (Wall wall: gamePanel.walls) {
+            if (wall.hitBox.intersects(hitBox)) {
+                onGround = true;
+            }
+        }
+        hitBox.y--;
 
 
         if (gamePanel.keyHandler.spacePressed) {
             hitBox.y++;
             for (Wall wall: gamePanel.walls) {
                 if (wall.hitBox.intersects(hitBox)) {
-                    ySpeed = -6.2;
+                    ySpeed = -7.0;
+                    onGround = false;
                 }
             }
             hitBox.y--;
+        }
+        if(!onGround) {
+            xSpeed *= 0.85;
         }
 
         gamePanel.collisionChecker.checkPlayerCollision();
 
         worldX += xSpeed;
-        worldY += ySpeed;
+        worldY += (int)ySpeed;
 
-        hitBox.x = worldX;
-        hitBox.y = worldY;
+        hitBox.x = (int)worldX;
+        hitBox.y = (int)worldY;
 
     }
 
@@ -98,8 +109,8 @@ public class Player extends Entity{
 //        worldX = gamePanel.level.returnSpawnX() * gamePanel.tileSize;
 //        worldY = gamePanel.level.returnSpawnY() * gamePanel.tileSize;
 
-        hitBox.x = worldX;
-        hitBox.y = worldY;
+        hitBox.x = (int)worldX;
+        hitBox.y = (int)worldY;
         xSpeed = 0;
         ySpeed = 0;
     }

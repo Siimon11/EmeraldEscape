@@ -37,7 +37,7 @@ public class Level {
     public void position(int spawnX, int spawnY) {
         gamePanel.player.worldX = gamePanel.tileSize * spawnX;
         gamePanel.player.worldY = gamePanel.tileSize * spawnY;
-        gamePanel.player.hitBox.x = gamePanel.player.worldX;
-        gamePanel.player.hitBox.y = gamePanel.player.worldY;
+        gamePanel.player.hitBox.x = (int)gamePanel.player.worldX;
+        gamePanel.player.hitBox.y = (int)gamePanel.player.worldY;
     }
 }

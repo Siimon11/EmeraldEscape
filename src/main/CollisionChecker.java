@@ -13,7 +13,7 @@ public class CollisionChecker {
 
 
     public void checkPlayerCollision() {
-        gamePanel.player.ySpeed += 0.3;
+        gamePanel.player.ySpeed += 0.28;
 
         // Horizontal
         gamePanel.player.hitBox.x += gamePanel.player.xSpeed;

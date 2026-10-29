@@ -49,13 +49,13 @@ public class KeyHandler implements KeyListener {
         }
     }
     public void titleKeys(int code) {
-        if (code == KeyEvent.VK_W) {
+        if (code == KeyEvent.VK_W || code == KeyEvent.VK_UP) {
             if (gamePanel.ui.commandNumber == 0) {
                 gamePanel.ui.commandNumber = 1;
             } else if (gamePanel.ui.commandNumber == 1) {
                 gamePanel.ui.commandNumber = 0;
             }
-        } else if (code == KeyEvent.VK_S) {
+        } else if (code == KeyEvent.VK_S || code == KeyEvent.VK_DOWN) {
             if (gamePanel.ui.commandNumber == 0) {
                 gamePanel.ui.commandNumber = 1;
             } else if (gamePanel.ui.commandNumber == 1) {

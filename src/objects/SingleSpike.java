@@ -17,10 +17,10 @@ public class SingleSpike extends Spike{
         this.direction = direction;
 
         switch (direction) {
-            case "down": hitBox = new Rectangle(x + 4, y + 4, width - 8, height - 4); break;
-            case "up": hitBox = new Rectangle(x + 4, y, width - 8, height - 4); break;
-            case "left": hitBox = new Rectangle(x, y + 4, width - 4, height - 8); break;
-            case "right": hitBox = new Rectangle(x + 4, y + 4, width - 4, height - 8); break;
+            case "down": hitBox = new Rectangle(x + 8, y + 10, width - 16, height - 10); break;
+            case "up": hitBox = new Rectangle(x + 8, y, width - 16, height - 10); break;
+            case "left": hitBox = new Rectangle(x, y + 8, width - 10, height - 16); break;
+            case "right": hitBox = new Rectangle(x + 10, y + 8, width - 10, height - 16); break;
         }
 
         getImages();
@@ -35,6 +35,9 @@ public class SingleSpike extends Spike{
             case "right": image = spikeImage01_right; break;
         }
         g2.drawImage(image, x, y, width, height, null);
+        // Debug
+        //g2.setColor(new Color(255,0,0,100));
+        //g2.fillRect(hitBox.x, hitBox.y, hitBox.width, hitBox.height);
     }
     public void getImages() {
         try {

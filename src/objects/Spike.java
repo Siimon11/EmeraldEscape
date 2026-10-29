@@ -11,5 +11,6 @@ public class Spike {
 
     }
     public void draw(Graphics2D g2) {
+
     }
 }

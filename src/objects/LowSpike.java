@@ -16,10 +16,10 @@ public class LowSpike extends Spike{
         this.height = height;
         this.direction = direction;
         switch (direction) {
-            case "down": hitBox = new Rectangle(x, y + 20, width, height - 20); break;
-            case "up": hitBox = new Rectangle(x, y, width, height - 20); break;
-            case "left": hitBox = new Rectangle(x, y, width - 20, height); break;
-            case "right": hitBox = new Rectangle(x + 20, y, width - 20, height); break;
+            case "down": hitBox = new Rectangle(x+5, y + 26, width-10, height - 26); break;
+            case "up": hitBox = new Rectangle(x+5, y, width-10, height - 26); break;
+            case "left": hitBox = new Rectangle(x, y, width - 26, height); break;
+            case "right": hitBox = new Rectangle(x + 26, y, width - 26, height); break;
         }
         getImages();
     }
@@ -33,6 +33,9 @@ public class LowSpike extends Spike{
             case "right": image = spikeImage02_right; break;
         }
         g2.drawImage(image, x, y, width, height, null);
+        // Debug
+        //g2.setColor(new Color(255,0,0,100));
+        //g2.fillRect(hitBox.x, hitBox.y, hitBox.width, hitBox.height);
     }
     public void getImages() {
         try {

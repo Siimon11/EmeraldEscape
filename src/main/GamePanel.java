@@ -79,8 +79,8 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     public void reset() {
-        player.hitBox.x = player.worldX;
-        player.hitBox.y = player.worldY;
+        player.hitBox.x = (int)player.worldX;
+        player.hitBox.y = (int)player.worldY;
         player.xSpeed = 0;
         player.ySpeed = 0;
     }
@@ -139,19 +139,11 @@ public class GamePanel extends JPanel implements Runnable {
             }
 
         }
-
-
-
         /*
         for(Wall wall: walls) {
             wall.draw(g2);
         }
          */
-
-
-
-
-
         g2.dispose();
     }
     public void makeWalls() {

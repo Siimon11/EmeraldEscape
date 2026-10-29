@@ -8,7 +8,7 @@ public class Main {
         JFrame window = new JFrame();
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setResizable(false);
-        window.setTitle("Green Cube Trials");
+        window.setTitle("Emerald Escape");
         window.setIconImage(Toolkit.getDefaultToolkit().getImage(Main.class.getResource("/player/playerImage.png")));
 
         GamePanel gamePanel = new GamePanel();

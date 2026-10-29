@@ -15,7 +15,7 @@ public class MouseHandler implements MouseListener {
     public void mouseClicked(MouseEvent e) {
         int clickX = e.getX();
         int clickY = e.getY();
-        System.out.println(clickX + " " + clickY);
+        //System.out.println(clickX + " " + clickY);
         if (gamePanel.gameState == gamePanel.titleState) {
             if (gamePanel.ui.titleScreenNumber == 0) {
                 if (clickX > 355 && clickX < 640 && clickY > 355 && clickY < 640) {
@@ -31,8 +31,8 @@ public class MouseHandler implements MouseListener {
             if (gamePanel.keyHandler.debug) {
                 gamePanel.player.worldX = clickX - 16;
                 gamePanel.player.worldY = clickY - 16;
-                gamePanel.player.hitBox.x = gamePanel.player.worldX;
-                gamePanel.player.hitBox.y = gamePanel.player.worldY;
+                gamePanel.player.hitBox.x = (int)gamePanel.player.worldX;
+                gamePanel.player.hitBox.y = (int)gamePanel.player.worldY;
             }
         }
     }
