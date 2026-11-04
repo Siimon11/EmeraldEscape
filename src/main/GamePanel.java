@@ -43,6 +43,7 @@ public class GamePanel extends JPanel implements Runnable {
     public MouseHandler mouseHandler = new MouseHandler(this);
     public UI ui = new UI(this);
     public Level level = new Level(this);
+    public Config config = new Config(this);
     public Entity[][][] object = new Entity[3][10][100];
 
     // ARRAYLIST
@@ -77,6 +78,16 @@ public class GamePanel extends JPanel implements Runnable {
         reset();
         gameState = titleState;
         levelAssets.place();
+        config.loadConfig();
+        Runtime.getRuntime().addShutdownHook(new Thread()
+        {
+            public void run()
+            {
+                System.out.println("Config saved");
+                config.saveConfig();
+            }
+        });
+
     }
 
     public void reset() {

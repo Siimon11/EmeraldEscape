@@ -10,7 +10,7 @@ public class UI {
     Graphics2D g2;
     public int commandNumber;
     public int titleScreenNumber;
-    private BufferedImage mainMenuImage;
+    private BufferedImage mainMenuImage, levelSelectionImage, levelLockedImage;
     Font font;
     public UI(GamePanel gamePanel) {
         this.gamePanel = gamePanel;
@@ -40,23 +40,23 @@ public class UI {
         g2.drawImage(image, 0, 0, gamePanel.screenWidth, gamePanel.screenHeight, null);
     }
     public void drawLevelSelection() {
-        g2.setColor(Color.gray);
-        g2.fillRect(0, 0, gamePanel.screenWidth, gamePanel.screenHeight);
-        g2.setColor(Color.white);
-        g2.fillRoundRect(70, 30, 260, 600, 30, 30);
-        g2.fillRoundRect(370, 30, 260, 600, 30, 30);
-        g2.fillRoundRect(670, 30, 260, 600, 30, 30);
-        g2.setStroke(new BasicStroke(3));
-        g2.setColor(Color.black);
-        g2.drawRoundRect(70, 30, 260, 600, 30, 30);
-        g2.drawRoundRect(370, 30, 260, 600, 30, 30);
-        g2.drawRoundRect(670, 30, 260, 600, 30, 30);
-
-        String text = "Level";
-        g2.setFont(font);
-        g2.drawString(text + " 1", 100, 100);
-        g2.drawString(text + " 2", 400, 100);
-        g2.drawString(text + " 3", 700, 100);
+        BufferedImage image = null;
+        BufferedImage image2 = null;
+        image = levelSelectionImage;
+        g2.drawImage(image, 0, 0, gamePanel.screenWidth, gamePanel.screenHeight, null);
+        image2 = levelLockedImage;
+        if(!gamePanel.level.l2u) {
+            g2.drawImage(image2, 230, 244, 171, 273, null);
+        }
+        if(!gamePanel.level.l3u) {
+            g2.drawImage(image2, 426, 244, 171, 273, null);
+        }
+        if(!gamePanel.level.l4u) {
+            g2.drawImage(image2, 625, 244, 171, 273, null);
+        }
+        if(!gamePanel.level.l5u) {
+            g2.drawImage(image2, 823, 244, 173, 273, null);
+        }
     }
     public int getXforCenteredText(String text) {
         int lenght = (int)g2.getFontMetrics().getStringBounds(text, g2).getWidth();
@@ -79,6 +79,8 @@ public class UI {
     public void loadImages() {
         try {
             mainMenuImage = ImageIO.read(getClass().getResourceAsStream("/main_menu/emerald_escape_menu.png"));
+            levelSelectionImage = ImageIO.read(getClass().getResourceAsStream("/main_menu/level_selection.png"));
+            levelLockedImage = ImageIO.read(getClass().getResourceAsStream("/main_menu/level_lock_overlay.png"));
 
         } catch (IOException e) {
             e.printStackTrace();

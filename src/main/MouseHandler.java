@@ -22,10 +22,21 @@ public class MouseHandler implements MouseListener {
                 } else if (clickX > 400 && clickX < 623 && clickY > 270 && clickY < 318) {
                     gamePanel.ui.titleScreenNumber = 99; 
                 }
-            }
-            else if (gamePanel.ui.titleScreenNumber == 1) {
-                if (clickX > 70 && clickX < 330 && clickY > 70 && clickY < 670) {
+            } else if (gamePanel.ui.titleScreenNumber == 1) {
+                if (clickX > 27 && clickX < 206 && clickY > 245 && clickY < 517) {
                     gamePanel.level.changeRoom(1, 1);
+                } else if (clickX > 228 && clickX < 401 && clickY > 245 && clickY < 517) {
+                    System.out.println("Ancient Temple");
+                } else if (clickX > 425 && clickX < 598 && clickY > 245 && clickY < 517) {
+                    System.out.println("Lava Caverns");
+
+                } else if (clickX > 622 && clickX < 797 && clickY > 245 && clickY < 517) {
+                    System.out.println("Sky Islands");
+
+                } else if (clickX > 819 && clickX < 996 && clickY > 245 && clickY < 517) {
+                    System.out.println("Elven Castle");
+                } else if (clickX > 20 && clickX < 177 && clickY > 563 && clickY < 615) {
+                    gamePanel.ui.titleScreenNumber = 0;
                 }
             }
         } else if (gamePanel.gameState == gamePanel.playState) {

@@ -4,6 +4,7 @@ import main.GamePanel;
 
 public class Level {
     GamePanel gamePanel;
+    public boolean l2u,l3u,l4u,l5u;
     public Level(GamePanel gamePanel) {
         this.gamePanel = gamePanel;
     }
