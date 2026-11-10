@@ -11,6 +11,7 @@ public class UI {
     public int commandNumber;
     public int titleScreenNumber;
     private BufferedImage mainMenuImage, levelSelectionImage, levelLockedImage;
+    private BufferedImage jungleSelection, ancientTempleSelection, lavaCavernsSelection, skyIslandsSelection, elvenCastleSelection;
     Font font;
     public UI(GamePanel gamePanel) {
         this.gamePanel = gamePanel;
@@ -23,6 +24,8 @@ public class UI {
             if (titleScreenNumber == 0) {
                 drawTitleScreen();
             } else if (titleScreenNumber == 1) {
+                drawEnvironmentSelection();
+            } else if (titleScreenNumber > 1 && titleScreenNumber < 7) {
                 drawLevelSelection();
             } else if (titleScreenNumber == 99) {
                 drawOptions();
@@ -39,7 +42,7 @@ public class UI {
         image = mainMenuImage;
         g2.drawImage(image, 0, 0, gamePanel.screenWidth, gamePanel.screenHeight, null);
     }
-    public void drawLevelSelection() {
+    public void drawEnvironmentSelection() {
         BufferedImage image = null;
         BufferedImage image2 = null;
         image = levelSelectionImage;
@@ -57,6 +60,18 @@ public class UI {
         if(!gamePanel.level.l5u) {
             g2.drawImage(image2, 823, 244, 173, 273, null);
         }
+    }
+    public void drawLevelSelection() {
+        BufferedImage image = null;
+        image = switch (titleScreenNumber) {
+            case 2 -> jungleSelection;
+            case 3 -> ancientTempleSelection;
+            case 4 -> lavaCavernsSelection;
+            case 5 -> skyIslandsSelection;
+            case 6 -> elvenCastleSelection;
+            default -> null;
+        };
+        g2.drawImage(image, 0, 0, gamePanel.screenWidth, gamePanel.screenHeight, null);
     }
     public int getXforCenteredText(String text) {
         int lenght = (int)g2.getFontMetrics().getStringBounds(text, g2).getWidth();
@@ -81,7 +96,11 @@ public class UI {
             mainMenuImage = ImageIO.read(getClass().getResourceAsStream("/main_menu/emerald_escape_menu.png"));
             levelSelectionImage = ImageIO.read(getClass().getResourceAsStream("/main_menu/level_selection.png"));
             levelLockedImage = ImageIO.read(getClass().getResourceAsStream("/main_menu/level_lock_overlay.png"));
-
+            jungleSelection = ImageIO.read(getClass().getResourceAsStream("/main_menu/jungle.png"));
+            ancientTempleSelection = ImageIO.read(getClass().getResourceAsStream("/main_menu/ancient_temple.png"));
+            lavaCavernsSelection = ImageIO.read(getClass().getResourceAsStream("/main_menu/lava_caverns.png"));
+            skyIslandsSelection = ImageIO.read(getClass().getResourceAsStream("/main_menu/sky_islands.png"));
+            elvenCastleSelection = ImageIO.read(getClass().getResourceAsStream("/main_menu/elven_castle.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
